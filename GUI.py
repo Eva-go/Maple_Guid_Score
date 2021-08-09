@@ -32,8 +32,9 @@ def Lines():
 def ScreenShot():
     global ScreenShot_Count
     ScreenShot_Count=ScreenShot_Count+1
-    print(ScreenShot_Count)
-    pyautogui.screenshot("test"+str(ScreenShot_Count)+".png")
+    x,y=canvas.winfo_rootx(),canvas.winfo_rooty()
+    w,h=canvas.winfo_width(),canvas.winfo_height()
+    pyautogui.screenshot("스크린샷"+str(ScreenShot_Count)+".png",region=(x,y,w,h))
 
 
 canvas.pack(padx=10,pady=5)
