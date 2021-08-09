@@ -1,12 +1,12 @@
 import pyautogui
 import PIL
 from tkinter import *
-
 window= Tk()
 window.title("캡처도구")
 window.geometry("600x500")
 window.resizable(0, 0)
 canvas = Canvas(window,width=450,height=400,relief="solid", bd=1)
+ScreenShot_Count=0
 def Lines():
     Player_Name_LineX = 80
     Week_Score_LineX =270
@@ -28,11 +28,12 @@ def Lines():
     #플래그
     canvas.create_line(Flag_Score_LineX, 0, Flag_Score_LineX, 500, fill="#9F7FFF")
 
+
 def ScreenShot():
     global ScreenShot_Count
-    pyautogui.screenshot("test"+str(ScreenShot_Count)+".png")
+    ScreenShot_Count=ScreenShot_Count+1
     print(ScreenShot_Count)
-    ScreenShot_Count + 1
+    pyautogui.screenshot("test"+str(ScreenShot_Count)+".png")
 
 
 canvas.pack(padx=10,pady=5)
