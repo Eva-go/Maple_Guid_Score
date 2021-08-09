@@ -1,12 +1,12 @@
+import pyautogui
+import PIL
 from tkinter import *
 
 window= Tk()
 window.title("캡처도구")
 window.geometry("600x500")
 window.resizable(0, 0)
-
 canvas = Canvas(window,width=450,height=400,relief="solid", bd=1)
-
 def Lines():
     Player_Name_LineX = 80
     Week_Score_LineX =270
@@ -28,14 +28,23 @@ def Lines():
     #플래그
     canvas.create_line(Flag_Score_LineX, 0, Flag_Score_LineX, 500, fill="#9F7FFF")
 
+def ScreenShot():
+    global ScreenShot_Count
+    pyautogui.screenshot("test"+str(ScreenShot_Count)+".png")
+    print(ScreenShot_Count)
+    ScreenShot_Count + 1
+
+
 canvas.pack(padx=10,pady=5)
 canvas.create_rectangle(0, 0, 500, 450, fill="#590000")
+
+button=Button(window,text="스크린샷",command=ScreenShot)
+
+button.pack()
 
 Lines()
 
 window.attributes("-transparentcolor", "#590000")
-
-
 
 
 window.mainloop()
